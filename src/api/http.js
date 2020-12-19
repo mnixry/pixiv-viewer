@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://api.imjad.cn/pixiv/'
+const baseURL = 'https://api.obfs.dev/pixiv/'
 
 axios.defaults.baseURL = baseURL
 axios.defaults.timeout = 10000
