@@ -27,10 +27,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
       
-      - name: Install dependicies
-        run: yarn install
-      
-      - name: Cache node modules
+      - name: Preprare cache
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -42,6 +39,9 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+            
+      - name: Install depends
+        run: yarn install
 
       - name: Build dist
         run: yarn build
