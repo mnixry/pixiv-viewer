@@ -50,16 +50,31 @@ jobs:
         with:
           name: dist
           path: dist/
+  
+  publish:
+        name: 'Publish to Github Pages'
+        runs-on: ubuntu-latest
+        needs: [build]
+        
+        steps:
+          - uses: actions/checkout@v2
+            
+          - name: Download artifact
+            uses: actions/download-artifact@v2
+            with:
+              name: dist
+              path: dist/
+              
+          - name: Deploy to GitHub Pages
+            # You may pin to the exact commit or the version.
+            # uses: crazy-max/ghaction-github-pages@1510b11c0c2f843eafb8ff41b3da8c467c8d4a9f
+            uses: crazy-max/ghaction-github-pages@v2.2.0
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              build_dir: dist/
+              jekyll: false
+              allow_empty_commit: false
 
-      - name: Deploy to GitHub Pages
-        # You may pin to the exact commit or the version.
-        # uses: crazy-max/ghaction-github-pages@1510b11c0c2f843eafb8ff41b3da8c467c8d4a9f
-        uses: crazy-max/ghaction-github-pages@v2.2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          build_dir: dist/
-          jekyll: false
-          allow_empty_commit: false
     
       
