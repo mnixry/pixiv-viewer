@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://api.obfs.dev/pixiv/'
+const baseURL = 'https://hibiapi.herokuapp.com/api/pixiv/'
 
 axios.defaults.baseURL = baseURL
 axios.defaults.timeout = 10000
